@@ -1,75 +1,95 @@
 {
+  "replacing": {
+
+  },
+  "long_description": "= DESCRIPTION:\n\nConfigures a SQL Server database.\n\n= REQUIREMENTS:\n\n* Currently only works with EBS Volumes attached to server which are used as backup\/restore directories.\n\n= ATTRIBUTES: \n\nSee metadata.rb\n\n= USAGE:\n\nDesigned to be run within a RightScale ServerTemplate with the following run order:\n\nOperational Scripts\n  * do_restore_master - Restores the database from the most recent backup EBS volume.\n  * do_backup - Backs up the binary DB contents to an EBS volume.\n  \nDecommission Scripts\n  * do_backup - Performs final backup of DB contents to an EBS volume.\n",
+  "recipes": {
+    "db_sqlserver::do_restore_master": "Restore all databases from a backup directory.",
+    "db_sqlserver": "",
+    "db_sqlserver::default": "Not yet implemented",
+    "db_sqlserver::do_backup": "Backs up all non-system SQL Server databases to a backup directory."
+  },
+  "description": "Manages a SQL Server instance",
+  "maintainer": "RightScale, Inc.",
   "recommendations": {
 
   },
+  "name": "db_sqlserver",
+  "version": "0.0.3",
   "maintainer_email": "support@rightscale.com",
   "suggestions": {
 
   },
-  "conflicting": {
+  "platforms": {
 
   },
   "license": "Copyright (c) 2009 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
+  "conflicting": {
+
+  },
+  "dependencies": {
+
+  },
   "attributes": {
-    "db_sqlserver/server_name": {
+    "db_sqlserver\/backup": {
+      "type": "hash",
+      "multiple_values": false,
+      "display_name": "SQL Server database backup options",
       "required": false,
+      "recipes": [
+
+      ]
+    },
+    "db_sqlserver\/server_name": {
       "default": "localhost\\SQLEXPRESS",
       "type": "string",
-      "recipes": [
-
-      ],
+      "multiple_values": false,
       "description": "The network name of the SQL Server instance used by recipes.",
-      "multiple_values": false,
-      "display_name": "SQL Server instance network name"
-    },
-    "db_sqlserver/backup": {
+      "display_name": "SQL Server instance network name",
       "required": false,
-      "type": "hash",
       "recipes": [
 
-      ],
+      ]
+    },
+    "db_sqlserver\/restore": {
+      "type": "hash",
       "multiple_values": false,
-      "display_name": "SQL Server database backup options"
+      "display_name": "SQL Server database restore options",
+      "required": false,
+      "recipes": [
+
+      ]
     },
     "db_sqlserver": {
-      "required": false,
       "type": "hash",
+      "multiple_values": false,
+      "display_name": "General SQL Server database options",
+      "required": false,
       "recipes": [
 
-      ],
-      "multiple_values": false,
-      "display_name": "General SQL Server database options"
+      ]
     },
-    "db_sqlserver/restore/database_restore_dir": {
-      "required": false,
+    "db_sqlserver\/restore\/database_restore_dir": {
       "default": "d:\\datastore\\sqlserver\\databases",
       "type": "string",
-      "recipes": [
-
-      ],
+      "multiple_values": false,
       "description": "The local drive path or UNC path to the directory containing existing SQL Server database backup (.bak) files to be restored. Note that network drives are not supported by SQL Server.",
-      "multiple_values": false,
-      "display_name": "SQL Server restore .bak directory"
-    },
-    "db_sqlserver/restore": {
+      "display_name": "SQL Server restore .bak directory",
       "required": false,
-      "type": "hash",
       "recipes": [
 
-      ],
-      "multiple_values": false,
-      "display_name": "SQL Server database restore options"
+      ]
     },
-    "db_sqlserver/backup/database_backup_dir": {
-      "required": false,
+    "db_sqlserver\/backup\/database_backup_dir": {
       "default": "d:\\datastore\\sqlserver\\databases",
       "type": "string",
+      "multiple_values": false,
+      "description": "The local drive path or UNC path to the directory which will contain new SQL Server database backup (.bak) files. Note that network drives are not supported by SQL Server.",
+      "display_name": "SQL Server backup .bak directory",
+      "required": false,
       "recipes": [
 
-      ],
-      "description": "The local drive path or UNC path to the directory which will contain new SQL Server database backup (.bak) files. Note that network drives are not supported by SQL Server.",
-      "multiple_values": false,
-      "display_name": "SQL Server backup .bak directory"
+      ]
     }
   },
   "providing": {
@@ -82,25 +102,5 @@
     "db_sqlserver::do_backup": [
 
     ]
-  },
-  "dependencies": {
-
-  },
-  "long_description": "= DESCRIPTION:\r\n\r\nConfigures a SQL Server database.\r\n\r\n= REQUIREMENTS:\r\n\r\n* Currently only works with EBS Volumes attached to server which are used as backup/restore directories.\r\n\r\n= ATTRIBUTES: \r\n\r\nSee metadata.rb\r\n\r\n= USAGE:\r\n\r\nDesigned to be run within a RightScale ServerTemplate with the following run order:\r\n\r\nOperational Scripts\n  * do_restore_master - Restores the database from the most recent backup EBS volume.\n  * do_backup - Backs up the binary DB contents to an EBS volume.\n  \nDecommission Scripts\n  * do_backup - Performs final backup of DB contents to an EBS volume.\n",
-  "replacing": {
-
-  },
-  "platforms": {
-
-  },
-  "description": "Manages a SQL Server instance",
-  "name": "db_sqlserver",
-  "version": "0.0.1",
-  "recipes": {
-    "db_sqlserver::do_restore_master": "Restore all databases from a backup directory.",
-    "db_sqlserver::default": "Not yet implemented",
-    "db_sqlserver": "",
-    "db_sqlserver::do_backup": "Backs up all non-system SQL Server databases to a backup directory."
-  },
-  "maintainer": "RightScale, Inc."
+  }
 }

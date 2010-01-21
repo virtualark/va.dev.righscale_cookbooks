@@ -3,7 +3,7 @@ maintainer_email "support@rightscale.com"
 license          IO.read(File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'LICENSE')))
 description      "Manages a SQL Server instance"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.0.1"
+version          "0.0.3"
 
 recipe "db_sqlserver::default", "Not yet implemented"
 recipe "db_sqlserver::do_backup", "Backs up all non-system SQL Server databases to a backup directory."

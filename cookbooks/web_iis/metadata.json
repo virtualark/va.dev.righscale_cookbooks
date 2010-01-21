@@ -1,97 +1,71 @@
 {
+  "replacing": {
+
+  },
+  "long_description": "= DESCRIPTION:\n\nConfigures an IIS Web Server.\n\n= REQUIREMENTS:\n\n* Currently only works with an EBS Volume attached to server which is used as a web application source directory.\n\n= ATTRIBUTES: \n\nSee metadata.rb\n\n= USAGE:\n\nDesigned to be run within a RightScale ServerTemplate with the following run order:\n\nOperational Scripts\n  * do_simple_app_deploy - Deploys all web app from zipped source to wwwroot under IIS from an EBS volume.\n",
+  "recipes": {
+    "web_iis": "",
+    "web_iis::default": "Not yet implemented",
+    "web_iis::do_simple_app_deploy": "Deploys all web app from zipped source to wwwroot under IIS"
+  },
+  "description": "Manages IIS",
+  "maintainer": "RightScale, Inc.",
   "recommendations": {
 
   },
+  "name": "web_iis",
+  "version": "0.0.3",
   "maintainer_email": "support@rightscale.com",
   "suggestions": {
-
-  },
-  "conflicting": {
-
-  },
-  "license": "Copyright (c) 2009 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
-  "attributes": {
-    "web_iis": {
-      "required": false,
-      "type": "hash",
-      "recipes": [
-
-      ],
-      "multiple_values": false,
-      "display_name": "General IIS web server options"
-    },
-    "web_iis/deploy/web_app_src_zips": {
-      "required": false,
-      "default": "d:\\datastore\\aspdotnet\\webapps",
-      "type": "string",
-      "recipes": [
-
-      ],
-      "description": "The path to the directory containing one or more web application source .zip file(s).",
-      "multiple_values": false,
-      "display_name": "Web App Source Zips Directory"
-    },
-    "web_iis/page_content": {
-      "required": false,
-      "default": "Page Content",
-      "type": "string",
-      "recipes": [
-
-      ],
-      "description": "Page content",
-      "multiple_values": false,
-      "display_name": "Page Content"
-    },
-    "web_iis/page_title": {
-      "required": false,
-      "default": "Page Title",
-      "type": "string",
-      "recipes": [
-
-      ],
-      "description": "Page title",
-      "multiple_values": false,
-      "display_name": "Page Title"
-    },
-    "web_iis/deploy": {
-      "required": false,
-      "type": "hash",
-      "recipes": [
-
-      ],
-      "multiple_values": false,
-      "display_name": "IIS web server deployment options"
-    }
-  },
-  "providing": {
-    "web_iis::do_simple_app_deploy": [
-
-    ],
-    "web_iis": [
-
-    ],
-    "web_iis::update_page": [
-
-    ]
-  },
-  "dependencies": {
-
-  },
-  "long_description": "= DESCRIPTION:\r\n\r\nConfigures an IIS Web Server.\r\n\r\n= REQUIREMENTS:\r\n\r\n* Currently only works with an EBS Volume attached to server which is used as a web application source directory.\r\n\r\n= ATTRIBUTES: \r\n\r\nSee metadata.rb\r\n\r\n= USAGE:\r\n\r\nDesigned to be run within a RightScale ServerTemplate with the following run order:\r\n\r\nOperational Scripts\n  * do_simple_app_deploy - Deploys all web app from zipped source to wwwroot under IIS from an EBS volume.\n",
-  "replacing": {
 
   },
   "platforms": {
 
   },
-  "description": "Manages IIS",
-  "name": "web_iis",
-  "version": "0.0.2",
-  "recipes": {
-    "web_iis::do_simple_app_deploy": "Deploys all web app from zipped source to wwwroot under IIS",
-    "web_iis": "",
-    "web_iis::default": "Not yet implemented",
-    "web_iis::update_page": "Update page content and title"
+  "license": "Copyright (c) 2009 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
+  "conflicting": {
+
   },
-  "maintainer": "RightScale, Inc."
+  "dependencies": {
+
+  },
+  "attributes": {
+    "web_iis": {
+      "type": "hash",
+      "multiple_values": false,
+      "display_name": "General IIS web server options",
+      "required": false,
+      "recipes": [
+
+      ]
+    },
+    "web_iis\/deploy\/web_app_src_zips": {
+      "default": "d:\\datastore\\aspdotnet\\webapps",
+      "type": "string",
+      "multiple_values": false,
+      "description": "The path to the directory containing one or more web application source .zip file(s).",
+      "display_name": "Web App Source Zips Directory",
+      "required": false,
+      "recipes": [
+
+      ]
+    },
+    "web_iis\/deploy": {
+      "type": "hash",
+      "multiple_values": false,
+      "display_name": "IIS web server deployment options",
+      "required": false,
+      "recipes": [
+
+      ]
+    }
+  },
+  "providing": {
+    "web_iis": [
+
+    ],
+    "web_iis::do_simple_app_deploy": [
+
+    ]
+  }
 }
