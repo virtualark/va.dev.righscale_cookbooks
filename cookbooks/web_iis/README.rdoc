@@ -1,0 +1,18 @@
+= DESCRIPTION:
+
+Configures an IIS Web Server.
+
+= REQUIREMENTS:
+
+* Currently only works with an EBS Volume attached to server which is used as a web application source directory.
+
+= ATTRIBUTES: 
+
+See metadata.rb
+
+= USAGE:
+
+Designed to be run within a RightScale ServerTemplate with the following run order:
+
+Operational Scripts
+  * do_simple_app_deploy - Deploys all web app from zipped source to wwwroot under IIS from an EBS volume.

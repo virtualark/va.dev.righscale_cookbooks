@@ -1,0 +1,22 @@
+= DESCRIPTION:
+
+Configures a SQL Server database.
+
+= REQUIREMENTS:
+
+* Currently only works with EBS Volumes attached to server which are used as backup/restore directories.
+
+= ATTRIBUTES: 
+
+See metadata.rb
+
+= USAGE:
+
+Designed to be run within a RightScale ServerTemplate with the following run order:
+
+Operational Scripts
+  * do_restore_master - Restores the database from the most recent backup EBS volume.
+  * do_backup - Backs up the binary DB contents to an EBS volume.
+  
+Decommission Scripts
+  * do_backup - Performs final backup of DB contents to an EBS volume.
