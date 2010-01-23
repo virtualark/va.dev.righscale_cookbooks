@@ -5,6 +5,7 @@
   "long_description": "= DESCRIPTION:\n\nConfigures an IIS Web Server.\n\n= REQUIREMENTS:\n\n* Currently only works with an EBS Volume attached to server which is used as a web application source directory.\n\n= ATTRIBUTES: \n\nSee metadata.rb\n\n= USAGE:\n\nDesigned to be run within a RightScale ServerTemplate with the following run order:\n\nOperational Scripts\n  * do_simple_app_deploy - Deploys all web app from zipped source to wwwroot under IIS from an EBS volume.\n",
   "recipes": {
     "web_iis": "",
+    "web_iis::do_demo_deploy": "Deploys demo web app from cookbook-relative zipped source to wwwroot under IIS",
     "web_iis::default": "Not yet implemented",
     "web_iis::do_simple_app_deploy": "Deploys all web app from zipped source to wwwroot under IIS"
   },
@@ -14,7 +15,7 @@
 
   },
   "name": "web_iis",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "maintainer_email": "support@rightscale.com",
   "suggestions": {
 
@@ -62,6 +63,9 @@
   },
   "providing": {
     "web_iis": [
+
+    ],
+    "web_iis::do_demo_deploy": [
 
     ],
     "web_iis::do_simple_app_deploy": [

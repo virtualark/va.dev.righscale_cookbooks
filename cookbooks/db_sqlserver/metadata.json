@@ -7,6 +7,7 @@
     "db_sqlserver::do_restore_master": "Restore all databases from a backup directory.",
     "db_sqlserver": "",
     "db_sqlserver::default": "Not yet implemented",
+    "db_sqlserver::do_restore_demo": "Restores the demo database from a cookbook-relative directory.",
     "db_sqlserver::do_backup": "Backs up all non-system SQL Server databases to a backup directory."
   },
   "description": "Manages a SQL Server instance",
@@ -15,7 +16,7 @@
 
   },
   "name": "db_sqlserver",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "maintainer_email": "support@rightscale.com",
   "suggestions": {
 
@@ -97,6 +98,9 @@
 
     ],
     "db_sqlserver": [
+
+    ],
+    "db_sqlserver::do_restore_demo": [
 
     ],
     "db_sqlserver::do_backup": [

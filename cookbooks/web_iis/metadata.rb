@@ -3,9 +3,10 @@ maintainer_email "support@rightscale.com"
 license          IO.read(File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'LICENSE')))
 description      "Manages IIS"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.0.3"
+version          "0.0.4"
 
 recipe "web_iis::default", "Not yet implemented"
+recipe "web_iis::do_demo_deploy", "Deploys demo web app from cookbook-relative zipped source to wwwroot under IIS"
 recipe "web_iis::do_simple_app_deploy", "Deploys all web app from zipped source to wwwroot under IIS"
 
 # general
