@@ -16,7 +16,7 @@
 
   },
   "name": "db_sqlserver",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "maintainer_email": "support@rightscale.com",
   "suggestions": {
 
@@ -78,7 +78,7 @@
       "display_name": "SQL Server restore .bak directory",
       "required": false,
       "recipes": [
-
+        "db_sqlserver::do_restore_master"
       ]
     },
     "db_sqlserver\/backup\/database_backup_dir": {
@@ -89,7 +89,7 @@
       "display_name": "SQL Server backup .bak directory",
       "required": false,
       "recipes": [
-
+        "db_sqlserver::do_backup"
       ]
     }
   },

@@ -3,7 +3,7 @@ maintainer_email "support@rightscale.com"
 license          IO.read(File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'LICENSE')))
 description      "Manages a SQL Server instance"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.0.4"
+version          "0.0.5"
 
 recipe "db_sqlserver::default", "Not yet implemented"
 recipe "db_sqlserver::do_backup", "Backs up all non-system SQL Server databases to a backup directory."
@@ -28,7 +28,8 @@ attribute "db_sqlserver/backup",
 attribute "db_sqlserver/backup/database_backup_dir",
   :display_name => "SQL Server backup .bak directory",
   :description => "The local drive path or UNC path to the directory which will contain new SQL Server database backup (.bak) files. Note that network drives are not supported by SQL Server.",
-  :default => "d:\\datastore\\sqlserver\\databases"
+  :default => "d:\\datastore\\sqlserver\\databases",
+  :recipes => ["db_sqlserver::do_backup"]
 
 # restore
 attribute "db_sqlserver/restore",
@@ -38,4 +39,5 @@ attribute "db_sqlserver/restore",
 attribute "db_sqlserver/restore/database_restore_dir",
   :display_name => "SQL Server restore .bak directory",
   :description => "The local drive path or UNC path to the directory containing existing SQL Server database backup (.bak) files to be restored. Note that network drives are not supported by SQL Server.",
-  :default => "d:\\datastore\\sqlserver\\databases"
+  :default => "d:\\datastore\\sqlserver\\databases",
+  :recipes => ["db_sqlserver::do_restore_master"]

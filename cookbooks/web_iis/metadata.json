@@ -15,7 +15,7 @@
 
   },
   "name": "web_iis",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "maintainer_email": "support@rightscale.com",
   "suggestions": {
 
@@ -48,7 +48,7 @@
       "display_name": "Web App Source Zips Directory",
       "required": false,
       "recipes": [
-
+        "web_iis::do_simple_app_deploy"
       ]
     },
     "web_iis\/deploy": {
