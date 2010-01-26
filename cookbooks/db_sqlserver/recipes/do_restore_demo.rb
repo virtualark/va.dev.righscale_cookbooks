@@ -12,11 +12,7 @@ powershell "Restore the demo database from a cookbook-relative directory" do
   server_name = @node[:db_sqlserver][:server_name]
 
   # FIX: avoiding remote_file provider in windows until it is tested.
-  database_restore_dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'files', 'default', 'demo_database_i386'))
-
-  # SQL Server has a MAX_PATH limitation for backup files.
-  database_restore_dir = RightScale::RightLinkConfig[:platform].filesystem.long_path_to_short_path(database_restore_dir)
-
+  database_restore_dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'files', 'default', 'i386'))
   chef_attribute = Chef::Node::Attribute.new(
                       {'SQL_BACKUP_DIR_PATH' => database_restore_dir,
                        'SQL_SERVER_NAME' => server_name},
