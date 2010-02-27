@@ -14,9 +14,13 @@ See metadata.rb
 
 Designed to be run within a RightScale ServerTemplate with the following run order:
 
+Boot Scripts
+  * do_load_demo - Loads an inital database image.
+
 Operational Scripts
   * do_restore_master - Restores the database from the most recent backup EBS volume.
   * do_backup - Backs up the binary DB contents to an EBS volume.
+  * do_drop_database - Drops the given database.
   
 Decommission Scripts
   * do_backup - Performs final backup of DB contents to an EBS volume.

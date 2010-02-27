@@ -1,34 +1,9 @@
 {
-  "replacing": {
-
-  },
-  "long_description": "= DESCRIPTION:\n\nConfigures an IIS Web Server.\n\n= REQUIREMENTS:\n\n* Currently only works with an EBS Volume attached to server which is used as a web application source directory.\n\n= ATTRIBUTES: \n\nSee metadata.rb\n\n= USAGE:\n\nDesigned to be run within a RightScale ServerTemplate with the following run order:\n\nOperational Scripts\n  * do_simple_app_deploy - Deploys all web app from zipped source to wwwroot under IIS from an EBS volume.\n",
   "recipes": {
-    "web_iis": "",
     "web_iis::do_demo_deploy": "Deploys demo web app from cookbook-relative zipped source to wwwroot under IIS",
     "web_iis::default": "Not yet implemented",
+    "web_iis": "",
     "web_iis::do_simple_app_deploy": "Deploys all web app from zipped source to wwwroot under IIS"
-  },
-  "description": "Manages IIS",
-  "maintainer": "RightScale, Inc.",
-  "recommendations": {
-
-  },
-  "name": "web_iis",
-  "version": "0.0.5",
-  "maintainer_email": "support@rightscale.com",
-  "suggestions": {
-
-  },
-  "platforms": {
-
-  },
-  "license": "Copyright (c) 2009 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
-  "conflicting": {
-
-  },
-  "dependencies": {
-
   },
   "attributes": {
     "web_iis": {
@@ -43,8 +18,8 @@
     "web_iis\/deploy\/web_app_src_zips": {
       "default": "d:\\datastore\\aspdotnet\\webapps",
       "type": "string",
-      "multiple_values": false,
       "description": "The path to the directory containing one or more web application source .zip file(s).",
+      "multiple_values": false,
       "display_name": "Web App Source Zips Directory",
       "required": false,
       "recipes": [
@@ -61,6 +36,24 @@
       ]
     }
   },
+  "maintainer": "RightScale, Inc.",
+  "recommendations": {
+
+  },
+  "license": "Copyright (c) 2010 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
+  "maintainer_email": "support@rightscale.com",
+  "suggestions": {
+
+  },
+  "dependencies": {
+
+  },
+  "name": "web_iis",
+  "version": "0.0.12",
+  "conflicting": {
+
+  },
+  "description": "Manages IIS",
   "providing": {
     "web_iis": [
 
@@ -71,5 +64,12 @@
     "web_iis::do_simple_app_deploy": [
 
     ]
+  },
+  "long_description": "= DESCRIPTION:\n\nConfigures an IIS Web Server.\n\n= REQUIREMENTS:\n\n* Currently only works with an EBS Volume attached to server which is used as a web application source directory.\n\n= ATTRIBUTES: \n\nSee metadata.rb\n\n= USAGE:\n\nDesigned to be run within a RightScale ServerTemplate with the following run order:\n\nOperational Scripts\n  * do_simple_app_deploy - Deploys all web app from zipped source to wwwroot under IIS from an EBS volume.\n",
+  "replacing": {
+
+  },
+  "platforms": {
+
   }
 }

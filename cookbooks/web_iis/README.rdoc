@@ -14,5 +14,8 @@ See metadata.rb
 
 Designed to be run within a RightScale ServerTemplate with the following run order:
 
+Boot Scripts
+  * do_demo_deploy - Deploys an initial image of a demo web application to wwwroot.
+
 Operational Scripts
   * do_simple_app_deploy - Deploys all web app from zipped source to wwwroot under IIS from an EBS volume.

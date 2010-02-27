@@ -1,35 +1,11 @@
 {
-  "replacing": {
-
-  },
-  "long_description": "= DESCRIPTION:\n\nConfigures a SQL Server database.\n\n= REQUIREMENTS:\n\n* Currently only works with EBS Volumes attached to server which are used as backup\/restore directories.\n\n= ATTRIBUTES: \n\nSee metadata.rb\n\n= USAGE:\n\nDesigned to be run within a RightScale ServerTemplate with the following run order:\n\nOperational Scripts\n  * do_restore_master - Restores the database from the most recent backup EBS volume.\n  * do_backup - Backs up the binary DB contents to an EBS volume.\n  \nDecommission Scripts\n  * do_backup - Performs final backup of DB contents to an EBS volume.\n",
   "recipes": {
+    "db_sqlserver::do_drop_database": "Drop the specified database.",
     "db_sqlserver::do_restore_master": "Restore all databases from a backup directory.",
-    "db_sqlserver": "",
     "db_sqlserver::default": "Not yet implemented",
-    "db_sqlserver::do_restore_demo": "Restores the demo database from a cookbook-relative directory.",
-    "db_sqlserver::do_backup": "Backs up all non-system SQL Server databases to a backup directory."
-  },
-  "description": "Manages a SQL Server instance",
-  "maintainer": "RightScale, Inc.",
-  "recommendations": {
-
-  },
-  "name": "db_sqlserver",
-  "version": "0.0.5",
-  "maintainer_email": "support@rightscale.com",
-  "suggestions": {
-
-  },
-  "platforms": {
-
-  },
-  "license": "Copyright (c) 2009 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
-  "conflicting": {
-
-  },
-  "dependencies": {
-
+    "db_sqlserver::do_load_demo": "Loads the demo database from a cookbook-relative directory.",
+    "db_sqlserver::do_backup": "Backs up all non-system SQL Server databases to a backup directory.",
+    "db_sqlserver": ""
   },
   "attributes": {
     "db_sqlserver\/backup": {
@@ -44,8 +20,8 @@
     "db_sqlserver\/server_name": {
       "default": "localhost\\SQLEXPRESS",
       "type": "string",
-      "multiple_values": false,
       "description": "The network name of the SQL Server instance used by recipes.",
+      "multiple_values": false,
       "display_name": "SQL Server instance network name",
       "required": false,
       "recipes": [
@@ -61,6 +37,17 @@
 
       ]
     },
+    "db_sqlserver\/database_name": {
+      "default": "BlogEngine",
+      "type": "string",
+      "description": "The name of a database running on this SQL Server instance",
+      "multiple_values": false,
+      "display_name": "Database Name",
+      "required": false,
+      "recipes": [
+        "db_sqlserver::do_drop_database"
+      ]
+    },
     "db_sqlserver": {
       "type": "hash",
       "multiple_values": false,
@@ -73,8 +60,8 @@
     "db_sqlserver\/restore\/database_restore_dir": {
       "default": "d:\\datastore\\sqlserver\\databases",
       "type": "string",
-      "multiple_values": false,
       "description": "The local drive path or UNC path to the directory containing existing SQL Server database backup (.bak) files to be restored. Note that network drives are not supported by SQL Server.",
+      "multiple_values": false,
       "display_name": "SQL Server restore .bak directory",
       "required": false,
       "recipes": [
@@ -84,8 +71,8 @@
     "db_sqlserver\/backup\/database_backup_dir": {
       "default": "d:\\datastore\\sqlserver\\databases",
       "type": "string",
-      "multiple_values": false,
       "description": "The local drive path or UNC path to the directory which will contain new SQL Server database backup (.bak) files. Note that network drives are not supported by SQL Server.",
+      "multiple_values": false,
       "display_name": "SQL Server backup .bak directory",
       "required": false,
       "recipes": [
@@ -93,18 +80,46 @@
       ]
     }
   },
+  "maintainer": "RightScale, Inc.",
+  "recommendations": {
+
+  },
+  "license": "Copyright (c) 2010 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
+  "maintainer_email": "support@rightscale.com",
+  "suggestions": {
+
+  },
+  "dependencies": {
+
+  },
+  "name": "db_sqlserver",
+  "version": "0.0.12",
+  "conflicting": {
+
+  },
+  "description": "Manages a SQL Server instance",
   "providing": {
+    "db_sqlserver::do_drop_database": [
+
+    ],
     "db_sqlserver::do_restore_master": [
 
     ],
     "db_sqlserver": [
 
     ],
-    "db_sqlserver::do_restore_demo": [
+    "db_sqlserver::do_load_demo": [
 
     ],
     "db_sqlserver::do_backup": [
 
     ]
+  },
+  "long_description": "= DESCRIPTION:\n\nConfigures a SQL Server database.\n\n= REQUIREMENTS:\n\n* Currently only works with EBS Volumes attached to server which are used as backup\/restore directories.\n\n= ATTRIBUTES: \n\nSee metadata.rb\n\n= USAGE:\n\nDesigned to be run within a RightScale ServerTemplate with the following run order:\n\nBoot Scripts\n  * do_load_demo - Loads an inital database image.\n\nOperational Scripts\n  * do_restore_master - Restores the database from the most recent backup EBS volume.\n  * do_backup - Backs up the binary DB contents to an EBS volume.\n  * do_drop_database - Drops the given database.\n  \nDecommission Scripts\n  * do_backup - Performs final backup of DB contents to an EBS volume.\n",
+  "replacing": {
+
+  },
+  "platforms": {
+
   }
 }

@@ -3,12 +3,13 @@ maintainer_email "support@rightscale.com"
 license          IO.read(File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'LICENSE')))
 description      "Manages a SQL Server instance"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.0.5"
+version          "0.0.12"
 
 recipe "db_sqlserver::default", "Not yet implemented"
 recipe "db_sqlserver::do_backup", "Backs up all non-system SQL Server databases to a backup directory."
-recipe "db_sqlserver::do_restore_demo", "Restores the demo database from a cookbook-relative directory."
+recipe "db_sqlserver::do_load_demo", "Loads the demo database from a cookbook-relative directory."
 recipe "db_sqlserver::do_restore_master", "Restore all databases from a backup directory."
+recipe "db_sqlserver::do_drop_database", "Drop the specified database."
 
 # general
 attribute "db_sqlserver",
@@ -19,6 +20,12 @@ attribute "db_sqlserver/server_name",
   :display_name => "SQL Server instance network name",
   :description => "The network name of the SQL Server instance used by recipes.",
   :default => "localhost\\SQLEXPRESS"
+
+attribute "db_sqlserver/database_name",
+  :display_name => "Database Name",
+  :description => "The name of a database running on this SQL Server instance",
+  :default => "BlogEngine",
+  :recipes => ["db_sqlserver::do_drop_database"]
 
 # backup
 attribute "db_sqlserver/backup",
