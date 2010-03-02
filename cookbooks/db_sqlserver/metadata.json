@@ -1,103 +1,92 @@
 {
-  "recipes": {
-    "db_sqlserver::do_drop_database": "Drop the specified database.",
-    "db_sqlserver::do_restore_master": "Restore all databases from a backup directory.",
-    "db_sqlserver::default": "Not yet implemented",
-    "db_sqlserver::do_load_demo": "Loads the demo database from a cookbook-relative directory.",
-    "db_sqlserver::do_backup": "Backs up all non-system SQL Server databases to a backup directory.",
-    "db_sqlserver": ""
-  },
-  "attributes": {
-    "db_sqlserver\/backup": {
-      "type": "hash",
-      "multiple_values": false,
-      "display_name": "SQL Server database backup options",
-      "required": false,
-      "recipes": [
-
-      ]
-    },
-    "db_sqlserver\/server_name": {
-      "default": "localhost\\SQLEXPRESS",
-      "type": "string",
-      "description": "The network name of the SQL Server instance used by recipes.",
-      "multiple_values": false,
-      "display_name": "SQL Server instance network name",
-      "required": false,
-      "recipes": [
-
-      ]
-    },
-    "db_sqlserver\/restore": {
-      "type": "hash",
-      "multiple_values": false,
-      "display_name": "SQL Server database restore options",
-      "required": false,
-      "recipes": [
-
-      ]
-    },
-    "db_sqlserver\/database_name": {
-      "default": "BlogEngine",
-      "type": "string",
-      "description": "The name of a database running on this SQL Server instance",
-      "multiple_values": false,
-      "display_name": "Database Name",
-      "required": false,
-      "recipes": [
-        "db_sqlserver::do_drop_database"
-      ]
-    },
-    "db_sqlserver": {
-      "type": "hash",
-      "multiple_values": false,
-      "display_name": "General SQL Server database options",
-      "required": false,
-      "recipes": [
-
-      ]
-    },
-    "db_sqlserver\/restore\/database_restore_dir": {
-      "default": "d:\\datastore\\sqlserver\\databases",
-      "type": "string",
-      "description": "The local drive path or UNC path to the directory containing existing SQL Server database backup (.bak) files to be restored. Note that network drives are not supported by SQL Server.",
-      "multiple_values": false,
-      "display_name": "SQL Server restore .bak directory",
-      "required": false,
-      "recipes": [
-        "db_sqlserver::do_restore_master"
-      ]
-    },
-    "db_sqlserver\/backup\/database_backup_dir": {
-      "default": "d:\\datastore\\sqlserver\\databases",
-      "type": "string",
-      "description": "The local drive path or UNC path to the directory which will contain new SQL Server database backup (.bak) files. Note that network drives are not supported by SQL Server.",
-      "multiple_values": false,
-      "display_name": "SQL Server backup .bak directory",
-      "required": false,
-      "recipes": [
-        "db_sqlserver::do_backup"
-      ]
-    }
-  },
   "maintainer": "RightScale, Inc.",
   "recommendations": {
 
   },
-  "license": "Copyright (c) 2010 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
   "maintainer_email": "support@rightscale.com",
   "suggestions": {
+
+  },
+  "license": "Copyright (c) 2010 RightScale, Inc.\n\nAll rights reserved - Do Not Redistribute\n",
+  "attributes": {
+    "db_sqlserver/server_name": {
+      "required": false,
+      "default": "localhost\\SQLEXPRESS",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "description": "The network name of the SQL Server instance used by recipes.",
+      "multiple_values": false,
+      "display_name": "SQL Server instance network name"
+    },
+    "db_sqlserver/backup": {
+      "required": false,
+      "type": "hash",
+      "recipes": [
+
+      ],
+      "multiple_values": false,
+      "display_name": "SQL Server database backup options"
+    },
+    "db_sqlserver": {
+      "required": false,
+      "type": "hash",
+      "recipes": [
+
+      ],
+      "multiple_values": false,
+      "display_name": "General SQL Server database options"
+    },
+    "db_sqlserver/restore/database_restore_dir": {
+      "required": false,
+      "default": "d:\\datastore\\sqlserver\\databases",
+      "type": "string",
+      "recipes": [
+        "db_sqlserver::do_restore_master"
+      ],
+      "description": "The local drive path or UNC path to the directory containing existing SQL Server database backup (.bak) files to be restored. Note that network drives are not supported by SQL Server.",
+      "multiple_values": false,
+      "display_name": "SQL Server restore .bak directory"
+    },
+    "db_sqlserver/restore": {
+      "required": false,
+      "type": "hash",
+      "recipes": [
+
+      ],
+      "multiple_values": false,
+      "display_name": "SQL Server database restore options"
+    },
+    "db_sqlserver/database_name": {
+      "required": false,
+      "default": "BlogEngine",
+      "type": "string",
+      "recipes": [
+        "db_sqlserver::do_drop_database"
+      ],
+      "description": "The name of a database running on this SQL Server instance",
+      "multiple_values": false,
+      "display_name": "Database Name"
+    },
+    "db_sqlserver/backup/database_backup_dir": {
+      "required": false,
+      "default": "d:\\datastore\\sqlserver\\databases",
+      "type": "string",
+      "recipes": [
+        "db_sqlserver::do_backup"
+      ],
+      "description": "The local drive path or UNC path to the directory which will contain new SQL Server database backup (.bak) files. Note that network drives are not supported by SQL Server.",
+      "multiple_values": false,
+      "display_name": "SQL Server backup .bak directory"
+    }
+  },
+  "conflicting": {
 
   },
   "dependencies": {
 
   },
-  "name": "db_sqlserver",
-  "version": "0.0.12",
-  "conflicting": {
-
-  },
-  "description": "Manages a SQL Server instance",
   "providing": {
     "db_sqlserver::do_drop_database": [
 
@@ -105,21 +94,32 @@
     "db_sqlserver::do_restore_master": [
 
     ],
-    "db_sqlserver": [
+    "db_sqlserver::do_load_demo": [
 
     ],
-    "db_sqlserver::do_load_demo": [
+    "db_sqlserver": [
 
     ],
     "db_sqlserver::do_backup": [
 
     ]
   },
-  "long_description": "= DESCRIPTION:\n\nConfigures a SQL Server database.\n\n= REQUIREMENTS:\n\n* Currently only works with EBS Volumes attached to server which are used as backup\/restore directories.\n\n= ATTRIBUTES: \n\nSee metadata.rb\n\n= USAGE:\n\nDesigned to be run within a RightScale ServerTemplate with the following run order:\n\nBoot Scripts\n  * do_load_demo - Loads an inital database image.\n\nOperational Scripts\n  * do_restore_master - Restores the database from the most recent backup EBS volume.\n  * do_backup - Backs up the binary DB contents to an EBS volume.\n  * do_drop_database - Drops the given database.\n  \nDecommission Scripts\n  * do_backup - Performs final backup of DB contents to an EBS volume.\n",
-  "replacing": {
+  "platforms": {
 
   },
-  "platforms": {
+  "long_description": "= DESCRIPTION:\r\n\r\nConfigures a SQL Server database.\r\n\r\n= REQUIREMENTS:\r\n\r\n* Currently only works with EBS Volumes attached to server which are used as backup/restore directories.\r\n\r\n= ATTRIBUTES: \r\n\r\nSee metadata.rb\r\n\r\n= USAGE:\r\n\r\nDesigned to be run within a RightScale ServerTemplate with the following run order:\r\n\r\nBoot Scripts\r\n  * do_load_demo - Loads an inital database image.\r\n\r\nOperational Scripts\r\n  * do_restore_master - Restores the database from the most recent backup EBS volume.\r\n  * do_backup - Backs up the binary DB contents to an EBS volume.\r\n  * do_drop_database - Drops the given database.\r\n  \r\nDecommission Scripts\r\n  * do_backup - Performs final backup of DB contents to an EBS volume.\r\n",
+  "description": "Manages a SQL Server instance",
+  "name": "db_sqlserver",
+  "version": "0.0.12",
+  "recipes": {
+    "db_sqlserver::do_drop_database": "Drop the specified database.",
+    "db_sqlserver::do_restore_master": "Restore all databases from a backup directory.",
+    "db_sqlserver::do_load_demo": "Loads the demo database from a cookbook-relative directory.",
+    "db_sqlserver::default": "Not yet implemented",
+    "db_sqlserver": "",
+    "db_sqlserver::do_backup": "Backs up all non-system SQL Server databases to a backup directory."
+  },
+  "replacing": {
 
   }
 }
