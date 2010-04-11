@@ -1,0 +1,39 @@
+{
+  "maintainer": "Virtual Ark",
+  "recommendations": {
+
+  },
+  "maintainer_email": "rnd@virtualark.com",
+  "suggestions": {
+
+  },
+  "license": "Copyright (c) 2010 Virtual Ark\n",
+  "attributes": {
+
+  },
+  "conflicting": {
+
+  },
+  "dependencies": {
+
+  },
+  "providing": {
+    "hello_world": [
+
+    ]
+  },
+  "platforms": {
+
+  },
+  "long_description": "Long descriptions",
+  "description": "descriptions",
+  "name": "hello_world",
+  "version": "0.0.1",
+  "recipes": {
+    "hello_world::do_hello_world": "Do Hello World",
+    "hello_world": ""
+  },
+  "replacing": {
+
+  }
+}
