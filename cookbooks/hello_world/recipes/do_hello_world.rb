@@ -1,9 +1,4 @@
-# Cookbook Name:: db_sqlserver
-# Recipe:: do_backup
-#
-# Copyright 2009, RightScale, Inc.
-#
-# All rights reserved - Do Not Redistribute
+
 
 # Print Hello World to a text file  c:\temp\hello_world.txt
 powershell "Print Hello World to a text file  c:\temp\hello_world.txt" do
