@@ -1,0 +1,15 @@
+= DESCRIPTION:
+
+Testing RightLink with some sample scriprs
+
+= REQUIREMENTS:
+
+* Currently only works with EBS Volumes attached to server which are used as backup/restore directories.
+
+= ATTRIBUTES: 
+
+See metadata.rb
+
+= USAGE:
+
+Just run the hellow world script for now
