@@ -5,11 +5,8 @@ description      "A set of test scripts trying RightLink"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-recipe "hello_world::do_hello_world", "Prints hellow world to a text file c:\temp\hello_world.txt and to the eventviewer"
+recipe "hello_world::do_hello_world", "Prints hello world to a text file c:\\temp\\hello_world.txt and to the eventviewer"
 
-
-
-  
 attribute "test_string",
   :display_name => "Passes sample string to hello world script",
   :description => "Passes sample string to hello world script",
