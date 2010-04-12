@@ -1,7 +1,7 @@
 
 
 # Print Hello World to a text file  c:\temp\hello_world.txt
-powershell "Print Hello World to a text file  c:\temp\hello_world.txt" do
+powershell "Print Hello World to a text file  c:\\temp\\hello_world.txt" do
 
 
 	test_string = @node[:test_string]
