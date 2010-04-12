@@ -19,6 +19,18 @@
       "description": "Passes sample string to hello world script",
       "multiple_values": false,
       "display_name": "Passes sample string to hello world script"
+    },
+	
+	"web_iis/deploy/web_app_src_zips": {
+      "required": false,
+      "default": "d:\\datastore\\aspdotnet\\webapps",
+      "type": "string",
+      "recipes": [
+        "web_iis::do_simple_app_deploy"
+      ],
+      "description": "The path to the directory containing one or more web application source .zip file(s).",
+      "multiple_values": false,
+      "display_name": "Web App Source Zips Directory"
     }
   },
   "conflicting": {
