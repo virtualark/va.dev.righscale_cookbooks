@@ -7,8 +7,12 @@ version          "0.0.1"
 
 recipe "hello_world::do_hello_world", "Prints hellow world to a text file c:\temp\hello_world.txt and to the eventviewer"
 
-attribute "hello_world/test_string",
+
+
+  
+attribute "test_string",
   :display_name => "Passes sample string to hello world script",
   :description => "Passes sample string to hello world script",
   :default => "Hello World",
   :recipes => ["hello_world::do_hello_world"]
+  :type => "string"
