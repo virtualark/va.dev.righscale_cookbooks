@@ -9,7 +9,17 @@
   },
   "license": "Copyright (c) 2010 Virtual Ark\n",
   "attributes": {
-
+    "do_hello_world/test_string": {
+      "required": false,
+      "default": "Hello World",
+      "type": "string",
+      "recipes": [
+        "hello_world::do_hello_world"
+      ],
+      "description": "Passes sample string to hello world script",
+      "multiple_values": false,
+      "display_name": "Passes sample string to hello world script"
+    }
   },
   "conflicting": {
 
