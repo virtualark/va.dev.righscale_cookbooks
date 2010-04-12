@@ -5,6 +5,8 @@ powershell "Print Hello World to a text file  c:\temp\hello_world.txt" do
 
 
 	test_string = @node[:test_string]
+	puts "testing:"
+	puts @node[:test_string]
 	parameters('MY_PARAMETER' => test_string)
 
   
