@@ -9,7 +9,7 @@
   },
   "license": "Copyright (c) 2010 Virtual Ark\n",
   "attributes": {
-    "do_hello_world/test_string": {
+    "hello_world/test_string": {
       "required": false,
       "default": "Hello World",
       "type": "string",
