@@ -4,7 +4,7 @@
 powershell "Print Hello World to a text file  c:\temp\hello_world.txt" do
 
 
-	test_string = @node[:do_hello_world][:test_string]
+	test_string = @node[:hello_world][:test_string]
 	parameters('MY_PARAMETER' => test_string)
   
 	# FIX: avoiding remote_file provider in windows until it is tested.
